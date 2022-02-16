@@ -1,16 +1,17 @@
 apply plugin: 'android-library'
+apply plugin: 'com.github.dcendents.android-maven'
 
-dependencies {
-    compile 'com.android.support:support-v4:19.0.0'
-}
+group='cn.xxt'
+
+version = "1.0.0"
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 8
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
     }
 
     sourceSets {
@@ -22,4 +23,6 @@ android {
     }
 }
 
-apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+dependencies {
+    api deps.supportV4
+}
